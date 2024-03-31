@@ -1,0 +1,8 @@
+[flake8]
+ignore=N802
+import-order-style = google
+inline-quotes = double
+application-import-names = 
+exclude =
+     venv/,
+     */migrations/
