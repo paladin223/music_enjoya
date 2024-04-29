@@ -4,5 +4,5 @@ profile = "google"
 
 [tool.isort]
 profile = "google"
-known_first_party = ["about", "homepage", "cats", "users"]
-known_third_party = ["django"]
+known_first_party = ["config", "database", "models", "crud", "schemas"]
+known_third_party = ["sqlalchemy", "fastapi"]
