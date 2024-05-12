@@ -9,17 +9,14 @@ class AuthorBase(BaseModel):
     surname: str256
 
 
-class AuthorCreate(AuthorBase):
-    pass
-
-
-class Author(AuthorBase):
-    id: intpk
-
-
 class SongBase(BaseModel):
+    author_id: int
     title: str256
     duration: float
+
+
+class AuthorCreate(AuthorBase):
+    pass
 
 
 class SongCreate(SongBase):
@@ -28,3 +25,22 @@ class SongCreate(SongBase):
 
 class Song(SongBase):
     id: intpk
+    author: AuthorBase
+    co_authors: list["AuthorBase"] = []
+
+    class Config:
+        from_attributes = True
+
+
+class SongAuthor(BaseModel):
+    Song: SongBase
+    author_name: str
+
+
+class Author(AuthorBase):
+    id: intpk
+    songs: list["SongBase"] = []
+    features: list["SongBase"] = []
+
+    class Config:
+        from_attributes = True
